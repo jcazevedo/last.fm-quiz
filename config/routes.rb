@@ -1,4 +1,7 @@
 LastFmQuiz::Application.routes.draw do
+  match 'quiz/index' => 'quiz#index'
+  match 'quiz/start' => 'quiz#start'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,6 @@
+<h1>Personalized quiz for <%= @user %></h1>
+<ul>
+<% @user.artists.each do |artist| %>
+<li><%= artist %></li>
+<% end %>
+</ul>

@@ -1,0 +1,9 @@
+<h1>Last.fm Quiz</h1>
+<%= form_tag('/quiz/start') do -%>
+<div>
+  <%= text_field_tag('user') %>
+</div>
+<div>
+  <%= submit_tag('start') %>
+</div>
+<% end -%>

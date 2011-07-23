@@ -1,0 +1,37 @@
+require 'rubygems'
+require 'rake'
+require 'rake/testtask'
+require 'rake/rdoctask'
+require 'echoe'
+
+
+Echoe.new('htree', '0.7.0') do |p|
+  p.summary        = "HTML/XML tree library"
+  p.description    = "Htree provides a tree data structure which represent HTML and XML data"
+  p.url            = "http://www.a-k-r.org/htree/"
+  p.author         = "Tanaka Akira"
+  p.email          = "akr@fsij.org"
+  p.ignore_pattern = ["tmp/*", "script/*"]
+  p.development_dependencies = []
+end
+
+Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
+
+desc 'Default: run unit tests.'
+task :default => :test
+
+desc 'Test'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.pattern = 'test/test-*.rb'
+  t.verbose = true
+end
+
+desc 'RDoc'
+Rake::RDocTask.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'HTree'
+  rdoc.options << '-NS'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
