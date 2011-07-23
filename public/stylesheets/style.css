@@ -1,0 +1,217 @@
+/*  Less Framework 4
+ *  http://lessframework.com
+ *  by Joni Korpi
+ *  License: http://opensource.org/licenses/mit-license.php */
+
+
+/*  Resets
+ *  ------  */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figure, figcaption, hgroup, 
+menu, footer, header, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+    display: block;
+}
+
+a img {border: 0;}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Adelle, serif;
+    margin-bottom: 1.5em;
+}
+
+ul {
+    list-style: disc outside;
+}
+
+ul, ol {
+    margin-bottom: 1.5em;
+}
+
+ul > li,
+ol > li {
+    line-height: 1.5em;
+}
+
+h1 {
+    font-size: 1.5em; /* 24px */
+    line-height: 1em;
+    margin: 1em 0;
+}
+
+h2 {
+    font-size: 1.375em; /* 22px */
+    line-height: 1.0909em;
+    margin: 1.0909em 0;
+}
+
+h3 {
+    font-size: 1.25em; /* 20px */
+    line-height: 1.2em;
+    margin: 1.2em 0;
+}
+
+h4 {
+    font-size: 1.125em; /* 18px */
+    line-height: 1.3333em;
+    margin: 1.3333em 0;
+}
+
+h5, h6 {
+    font-size: 1em; /* 16px */
+    line-height: 1.5em;
+    margin: 1.5em 0;
+}
+
+p {
+    font-size: 1em; /* 16px */
+    line-height: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+small {
+    font-size: 0.8125em; /* 13px */
+    line-height: 1.8462em;
+    margin: 1.8462em 0;
+}
+
+body {
+    font: 16px/1.5em Georgia, Times, serif;
+}
+
+/* Selection colours (easy to forget) */
+
+::selection         {background: rgb(255,255,158);}
+::-moz-selection    {background: rgb(255,255,158);}
+img::selection      {background: transparent;}
+img::-moz-selection {background: transparent;}
+body {-webkit-tap-highlight-color: rgb(255,255,158);}
+
+/* Gutter */
+
+.gutter_left { margin-left: 12px; }
+.gutter_right { margin-right: 12px; }
+.gutter_both { margin: 0 12px; }
+
+
+/*  Default Layout: 992px. 
+ *  Gutters: 24px.
+ *  Outer margins: 48px.
+ *  Leftover space for scrollbars @1024px: 32px.
+ *  -------------------------------------------------------------------------------
+ *  cols    1     2      3      4      5      6      7      8      9      10
+ *  px      68    160    252    344    436    528    620    712    804    896    */
+
+body {
+    width: 896px;
+    padding: 24px 48px 84px;
+    -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+    margin: 0 auto;
+}
+
+
+/*------------------------------------*\
+  MAIN
+\*------------------------------------*/
+
+/* float clearing for IE6 */
+* html .clearfix{
+    height: 1%;
+    overflow: visible;
+}
+
+/* float clearing for IE7 */
+*+html .clearfix{
+    min-height: 1%;
+}
+
+/* float clearing for everyone else */
+.clearfix:after{
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+}
+
+a {
+    color: #777;
+}
+
+a:hover {
+    color: #333;
+}
+
+/*  Tablet Layout: 768px.
+ *  Gutters: 24px.
+ *  Outer margins: 28px.
+ *  Inherits styles from: Default Layout.
+ *  -----------------------------------------------------------------
+ *  cols    1     2      3      4      5      6      7      8
+ *  px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+    body {
+        width: 712px;
+        padding: 48px 28px 60px;
+    }
+
+}
+
+
+/*  Mobile Layout: 320px.
+ *  Gutters: 24px.
+ *  Outer margins: 34px.
+ *  Inherits styles from: Default Layout.
+ *  ---------------------------------------------
+ *  cols    1     2      3
+ *  px      68    160    252    */
+
+@media only screen and (max-width: 767px) {
+    
+    body {
+        width: 252px;
+        padding: 48px 34px 60px;
+    }
+    
+}
+
+
+/*  Wide Mobile Layout: 480px.
+ *  Gutters: 24px.
+ *  Outer margins: 22px.
+ *  Inherits styles from: Default Layout, Mobile Layout.
+ *  ------------------------------------------------------------
+ *  cols    1     2      3      4      5
+ *  px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    
+    body {
+        width: 436px;
+        padding: 36px 22px 48px;
+    }
+    
+}
+
+/*------------------------------------*\
+  MAIN
+\*------------------------------------*/
+
+/*body:hover {
+    background: url('./grid.png');
+    background-position: 0 0;
+}*/
