@@ -11,6 +11,17 @@ class User
     load_user_albums
   end
 
+  def generate_questions
+    questions = []
+    factory = QuestionFactory.new(@artists, @tracks, @albums)
+
+    for i in 1..10
+      questions << factory.build_question
+    end
+
+    questions
+  end
+
 private
   def load_user_artists
     uri = "http://ws.audioscrobbler.com/2.0/?method=library.getartists&api_key=0acd534794ec0c9e320ef8168adc833d&user=" + @username
@@ -45,12 +56,15 @@ private
     uri = "http://ws.audioscrobbler.com/2.0/?method=library.getalbums&api_key=0acd534794ec0c9e320ef8168adc833d&user=" + @username
     data = Net::HTTP.get_response(URI.parse(uri)).body
 
+    puts data
+
     @albums = []
     doc = REXML::Document.new(data)
     doc.elements.each('//album') do |album|
       @artists << Artist.new(album.elements['artist'].elements['name'].text)
       @albums << Album.new(album.elements['artist'].elements['name'].text,
-                           album.elements['name'].text)
+                           album.elements['name'].text,
+                           album.elements['image[@size="large"]'].text)
     end
 
     @artists.uniq!

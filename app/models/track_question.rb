@@ -1,0 +1,2 @@
+class TrackQuestion < Question
+end

@@ -1,4 +1,4 @@
-<h1>Personalized quiz for <%= @user.name %></h1>
+<h1>Personalized quiz for <%= @user.username %></h1>
 <ul>
 <% @user.artists.each do |artist| %>
 <li><%= artist.name %></li>
@@ -16,4 +16,24 @@
 <li><%= album.artist %> - <%= album.title %></li>
 <% end %>
 </ul>
+
+<% questions = @user.generate_questions %>
+<ul>
+<% questions.each do |question| %>
+<% if question.is_a? CoverQuestion %>
+<li><img src="<%= question.question %>" /></li>
+<% else %>
+<li><%= question.question %></li>
+<% end %>
+<ul>
+<% for i in 0...question.answers.length %>
+<% if i == question.correct_answer %>
+<li><b><%= question.answers[i] %></b></li>
+<% else %>
+<li><%= question.answers[i] %></li>
+<% end %>
+<% end %>
+</ul>
+<% end %>
+<ul>
 

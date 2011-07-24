@@ -5,4 +5,12 @@ class Track
     @artist = artist
     @title = title
   end
+
+  def eql?(other_track)
+    @artist.eql?(other_track.artist) && @title.eql?(other_track.title)
+  end
+
+  def hash
+    (@artist+@title).hash
+  end
 end
