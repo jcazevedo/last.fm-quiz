@@ -43,7 +43,7 @@ class QuizController < ApplicationController
       config.oauth_token_secret = auth["credentials"]["secret"]
     end
 
-    Twitter.update("Just got a new high score! on #lastfmquiz #geekslab")
-    redirect_to :action => "index", 
+    Twitter.update("Just got "+session[:correct_answers].to_s+"/10 on "+session[:username].to_s+"'s library #lastfmquiz #geekslab")
+    redirect_to :controller => "quiz", :action => "index"
   end
 end
