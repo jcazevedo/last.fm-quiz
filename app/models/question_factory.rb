@@ -79,7 +79,7 @@ class QuestionFactory
       length = @tracks.length
       selected_track = @tracks[rand(length)]
       answers = [nil, nil, nil]
-      answers[correct_answer] = selected_track.title
+      answers[correct_answer] = selected_track.artist
       
       for i in 0...answers.length
         if answers[i].nil?

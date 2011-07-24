@@ -1,0 +1,23 @@
+<% if @correct_answers %>
+
+You got <%= @correct_answers %>/<%= @number_of_questions %> answers right!
+
+<% else %>
+
+<h1>Question <%= @number %>/<%= session[:questions].length %></h1>
+<% if @question.is_a? CoverQuestion %>
+<h2>What album is this cover from?</h2>
+<img src="<%= @question.question %>" />
+<% else %>
+<h2><%= @question.question %></h2>
+<% end %>
+
+<%= form_tag '/quiz/questions/'+(@number+1).to_s do %>
+<% for i in 0...@question.answers.length %>
+<%= radio_button_tag(:answer, i) %>
+<%= label_tag(:answer, @question.answers[i]) %>
+<% end %>
+<%= submit_tag("Submit") %>
+<% end %>
+
+<% end %>
