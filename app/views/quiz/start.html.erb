@@ -1,6 +1,19 @@
-<h1>Personalized quiz for <%= @user %></h1>
+<h1>Personalized quiz for <%= @user.name %></h1>
 <ul>
 <% @user.artists.each do |artist| %>
-<li><%= artist %></li>
+<li><%= artist.name %></li>
 <% end %>
 </ul>
+
+<ul>
+<% @user.tracks.each do |track| %>
+<li><%= track.artist %> - <%= track.title %></li>
+<% end %>
+</ul>
+
+<ul>
+<% @user.albums.each do |album| %>
+<li><%= album.artist %> - <%= album.title %></li>
+<% end %>
+</ul>
+
