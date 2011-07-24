@@ -9,11 +9,13 @@ class QuizController < ApplicationController
   def index
     session[:questions] = nil
     session[:current_question] = nil
+    session[:correct_answers] = 0
   end
 
   def questions
     if params[:id].to_i == 1 && session[:questions].nil?
       user = User.new(params[:user])
+      session[:username] = params[:user]
       session[:questions] = user.generate_questions
       session[:correct_answers] = 0
       session[:number_questions] = session[:questions].length
@@ -24,15 +26,12 @@ class QuizController < ApplicationController
       session[:current_question] = session[:current_question].to_i + 1      
     end
 
-    puts "Current: " + session[:current_question].to_s
-    puts "ID: " + params[:id].to_s
-
     if params[:id].to_i != session[:current_question].to_i
       redirect_to :action => "reset"
     end
 
     @questions = session[:questions]
-    if params[:id].to_i != 1 && !params[:answer].nil?
+    if !params[:answer].nil? &&
         params[:answer].to_i == @questions[params[:id].to_i-2].correct_answer
       session[:correct_answers] = session[:correct_answers].to_i + 1
     end
