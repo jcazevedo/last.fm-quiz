@@ -3,6 +3,7 @@ LastFmQuiz::Application.routes.draw do
   match 'quiz/index' => 'quiz#index'
   match 'quiz/start' => 'quiz#start'
   match 'quiz/questions/:id' => 'quiz#questions'
+  match 'quiz/reset' => 'quiz#reset'
   match "/auth/twitter/callback" => "quiz#tweet"
 
   # The priority is based upon order of creation:
