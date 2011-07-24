@@ -1,0 +1,2 @@
+class CoverQuestion < Question
+end
