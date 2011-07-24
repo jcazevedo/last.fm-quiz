@@ -37,15 +37,19 @@ class QuizController < ApplicationController
     end
 
     if params[:id].to_i > @questions.length
-      @correct_answers = session[:correct_answers]
-      @number_of_questions = session[:number_questions]
-
-      session[:questions] = nil
-      session[:current_question] = nil
+      redirect_to :action => "final"
     else
       @number = params[:id].to_i
       @question = @questions[params[:id].to_i-1]
     end
+  end
+
+  def final
+    @correct_answers = session[:correct_answers]
+    @number_of_questions = session[:number_questions]
+
+    session[:questions] = nil
+    session[:current_question] = nil
   end
 
   def reset
