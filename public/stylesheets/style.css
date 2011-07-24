@@ -26,8 +26,27 @@ footer, header, nav, section, audio, video {
 
 a img {border: 0;}
 
+
+/*  Typography presets
+ *  ------------------  */
+
+@font-face {
+    font-family: "Aller";
+    src: url('./fonts/Aller_Lt.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "AllerBold";
+    src: url('./fonts/Aller_Bd.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: Adelle, serif;
+    font-family: AllerBold, serif;
     margin-bottom: 1.5em;
 }
 
@@ -87,7 +106,7 @@ small {
 }
 
 body {
-    font: 16px/1.5em Georgia, Times, serif;
+    font: 16px/1.5em Aller, sans-serif;
 }
 
 /* Selection colours (easy to forget) */
@@ -97,33 +116,6 @@ body {
 img::selection      {background: transparent;}
 img::-moz-selection {background: transparent;}
 body {-webkit-tap-highlight-color: rgb(255,255,158);}
-
-/* Gutter */
-
-.gutter_left { margin-left: 12px; }
-.gutter_right { margin-right: 12px; }
-.gutter_both { margin: 0 12px; }
-
-
-/*  Default Layout: 992px. 
- *  Gutters: 24px.
- *  Outer margins: 48px.
- *  Leftover space for scrollbars @1024px: 32px.
- *  -------------------------------------------------------------------------------
- *  cols    1     2      3      4      5      6      7      8      9      10
- *  px      68    160    252    344    436    528    620    712    804    896    */
-
-body {
-    width: 896px;
-    padding: 24px 48px 84px;
-    -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
-    margin: 0 auto;
-}
-
-
-/*------------------------------------*\
-  MAIN
-\*------------------------------------*/
 
 /* float clearing for IE6 */
 * html .clearfix{
@@ -146,13 +138,165 @@ body {
     font-size: 0;
 }
 
-a {
-    color: #777;
+
+/*  Default Layout: 992px. 
+ *  Gutters: 24px.
+ *  Outer margins: 48px.
+ *  Leftover space for scrollbars @1024px: 32px.
+ *  -------------------------------------------------------------------------------
+ *  cols    1     2      3      4      5      6      7      8      9      10
+ *  px      68    160    252    344    436    528    620    712    804    896    */
+
+body {
+    -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 }
 
-a:hover {
-    color: #333;
+.container {
+    width: 896px;
+    padding: 72px 48px 84px;
+    margin: 0 auto;
 }
+
+header {
+    height: 200px;
+    background-image: -webkit-linear-gradient(top, #e21403, #d20f02);
+    border-top: 1px solid #de7771;
+    border-bottom: 1px solid #a50600;
+}
+
+#lastfmlogo, #userlabel, #username {
+    float: left;
+}
+
+#userlabel {
+    color: #fff;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 4em;
+
+    line-height: 53px;
+
+    padding: 0 7px;
+}
+
+#user {
+    border: 0;
+    height: 53px;
+    width: 450px;
+
+    font-size: 2em;
+    padding-left: 10px;
+
+    border-radius: 53px;
+    outline: none;
+}
+
+.button {
+    border-top: solid 1px #363636;
+    border-right: solid 1px #010101;
+    border-bottom: solid 1px #010101;
+    border-left: solid 1px #363636; 
+
+    box-shadow: inset 1px 1px #656565;
+    background-image: -webkit-linear-gradient(top, #4a4a4a, #343434);
+
+    color: #FFF;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 33px;
+    width: 150px;
+    height: 33px;
+    border-radius: 5px;
+
+    margin: 10px 0 0 10px;
+}
+
+.button:hover {
+    background-image: none;
+    background-color: #222;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: #555;
+}
+
+#question {
+    float: left;
+    width: 600px;
+}
+
+#title {
+    margin-top: 0;
+}
+
+#question label {
+    display: block;
+
+    font-size: 1.2em;
+    margin: 15px 0 15px 45px;
+}
+
+.answer {
+    float: left;
+    margin-left: 20px;
+}
+
+#cover {
+    width: 126px;
+    height: 126px;
+    float: left;
+    background-color: #ccc;
+
+    margin: 30px 0 0 35px;
+}
+
+#score {
+    text-align: center;
+}
+
+#score h3 {
+    text-align: center;
+    font-size: 2.2em;
+}
+
+#score h3 > span {
+    font-size: 2em;
+    color: #d20f02;
+    font-weight: normal;
+}
+
+#score > div {
+    display: inline-block;
+}
+
+#startover, #twitter {
+    display: block;
+    text-decoration: none;
+    float: left;
+}
+
+#twitter {
+    color: rgba(0, 0, 0, 0.8);
+
+    border-top: solid 1px rgba(0, 0, 0, 0.2);
+    border-left: solid 1px rgba(0, 0, 0, 0.2);
+    border-right: solid 1px rgba(0, 0, 0, 0.4);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.4);
+
+    box-shadow: inset -1px -1px rgba(0, 0, 0, 0.2);
+    background-image: -webkit-linear-gradient(top, #75dcff, #35cdff);
+}
+
+#twitter:hover {
+    background-image: none;
+    background-color: #96e4ff;
+}
+
+#twitter:active {
+    background-color: #63b9d7;
+}
+
+
 
 /*  Tablet Layout: 768px.
  *  Gutters: 24px.
@@ -206,12 +350,3 @@ a:hover {
     }
     
 }
-
-/*------------------------------------*\
-  MAIN
-\*------------------------------------*/
-
-/*body:hover {
-    background: url('./grid.png');
-    background-position: 0 0;
-}*/

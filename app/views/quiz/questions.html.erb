@@ -1,15 +1,24 @@
-<h1>Question <%= @number %>/<%= session[:questions].length %></h1>
+<%= render :partial => "header" %>
+<section class="container clearfix">
+
+<%= form_tag('/quiz/questions/'+(@number+1).to_s, {:id => "question"}) do %>
+
 <% if @question.is_a? CoverQuestion %>
-<h2>What album is this cover from?</h2>
-<img src="<%= @question.question %>" />
+<h3 id="title">#<%= @number %>/<%= session[:questions].length %> What album is this cover from?</h3>
 <% else %>
-<h2><%= @question.question %></h2>
+<h3 id="title">#<%= @number %>/<%= session[:questions].length %> <%= @question.question %></h3>
 <% end %>
 
-<%= form_tag '/quiz/questions/'+(@number+1).to_s do %>
 <% for i in 0...@question.answers.length %>
-<%= radio_button_tag(:answer, i) %>
+<%= radio_button_tag(:answer, i, false, {:class => "answer"}) %>
 <%= label_tag(:answer, @question.answers[i]) %>
 <% end %>
-<%= submit_tag("Submit") %>
+
+    <%= submit_tag("Next »", {:class => "button", }) %>
 <% end %>
+
+<% if @question.is_a? CoverQuestion %>
+<img id="cover" src="<%= @question.question %>" />
+<% end %>
+</section>
+

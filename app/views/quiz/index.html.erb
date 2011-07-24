@@ -1,9 +1,11 @@
-<h1>Last.fm Quiz</h1>
-<%= form_tag('/quiz/questions/1') do -%>
-<div>
-  <%= text_field_tag('user') %>
-</div>
-<div>
-  <%= submit_tag('start') %>
-</div>
-<% end -%>
+<header>
+    <%= form_tag('/quiz/questions/1', {:id => "signup", :class => "container clearfix" }) do -%>
+
+        <%= image_tag('lastfm.png', {:id => "lastfmlogo", :alt => "last.fm logo"}) %>
+
+        <label id="userlabel" for="username">/</label>
+        <%= text_field_tag('user') %>
+        <%= submit_tag('Start »', {:class => "button"}) %>
+    <% end %>
+    
+</header>

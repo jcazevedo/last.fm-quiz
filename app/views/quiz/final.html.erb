@@ -1,2 +1,15 @@
-You got <%= @correct_answers %>/<%= @number_of_questions %> answers right!
-<%= link_to "Tweet your score!", "/auth/twitter" %>
+<section class="container clearfix">
+<div id="score">
+    <h3>
+        You got <span><%= @correct_answers %></span>/<%= @number_of_questions %> answers right!
+    </h3>
+
+    <div class="clearfix">
+
+        <%= link_to "Restart Quiz", "/quiz/index", {:id => "startover", :class => "button"} %>
+        <%= link_to "Tweet your score!", "/auth/twitter", {:id => "twitter", :class => "button"} %>
+
+    </div>
+</div>
+</section>
+
