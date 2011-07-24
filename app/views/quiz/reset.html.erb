@@ -1,0 +1,5 @@
+<h1>A game is already underway.</h1>
+<h2>Reset?</h2>
+<%= link_to 'Yes', :action => "index" %> | 
+<%= link_to 'No', :action => "questions", 
+                  :id => session[:current_question].to_i %>
