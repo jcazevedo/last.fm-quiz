@@ -1,3 +1,10 @@
+require 'rubygems'
+require 'oauth'
+require 'twitter'
+
+CTOKEN = 'FsYvtqQ7zFb2dXXIinRLg';
+CSECRET = 'N5lxmxZIxCug5FBBYSRsfuQObGLPpRJWNsjJeO5Lo';
+
 class QuizController < ApplicationController
   def index
   end
@@ -24,5 +31,19 @@ class QuizController < ApplicationController
       @number = params[:id].to_i
       @question = @questions[params[:id].to_i-1]
     end
+  end
+
+  def tweet
+    auth = request.env["omniauth.auth"]
+    
+    Twitter.configure do |config|
+      config.consumer_key = CTOKEN
+      config.consumer_secret = CSECRET
+      config.oauth_token = auth["credentials"]["token"]
+      config.oauth_token_secret = auth["credentials"]["secret"]
+    end
+
+    Twitter.update("Just got a new high score! on #lastfmquiz #geekslab")
+    redirect_to :action => "index", 
   end
 end
